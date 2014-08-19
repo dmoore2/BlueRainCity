@@ -58,14 +58,11 @@ function loadDataFromUrlHash(urlHash)
 		}
 		if(new_url_encoding_map["txt_order_is_random"])
 		{
+			console.log("1");
 			txt_order_is_random = new_url_encoding_map["txt_order_is_random"];
 		}
 	}
 }
-
-
-
-
 
 //decode url with regExp
 $.urlParam = function(name){
@@ -75,31 +72,3 @@ $.urlParam = function(name){
     return results[1] || 0; //means the value is empty if returns 0
 }
 
-
-//examples of encoding and decoding variables in url:
-
-		//append to url without reload, in practice
-	// should first check to be sure the there is not already an appended string
-	// window.location+="#?&amp;param2=city&amp;id=I catn&amp;emptyval=sdf%20sdf&amp;param1=1231231312";
-
-
-	
-	//get values from url
-	// console.log($.urlParam('param1')); // name
-	// console.log($.urlParam('emptyval')); // name
-	// console.log($.urlParam('id')); // name
-	// console.log(decodeURIComponent($.urlParam('param1'))); // name
-	// console.log(decodeURIComponent($.urlParam('emptyval'))); // name
-	// console.log(decodeURIComponent($.urlParam('id'))); // name
-
-
-
-//further examples of using decodeURIComponent
-	// console.log("order 1");
-	// var url = $(location).attr('href'); //get current url
-	// console.log(decodeURIComponent(url));
-	// //OR
-	// var url = 'folder%2Findex.html%3Fparam%3D%2323dd%26noob%3Dyes'; //or specify one
-	 
-	// var decodedUrl = decodeURIComponent(url);
-	// console.log(decodedUrl);
