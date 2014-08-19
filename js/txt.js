@@ -1,28 +1,38 @@
 $(document).ready(function() {
-	currentGoogleSpreadsheetURL = "https://docs.google.com/spreadsheet/pub?key=0ApOCdMtD_lyYdDlhNGY0TWs3aFYteFhjMkJMU181bmc&output=html";
 	getJSONDataFromGoogleSpreadsheet(currentGoogleSpreadsheetURL);
 });
 
 function initDisplay()
 {
+	console.log(txt_order_is_random);
+	if(txt_order_is_random)
+	{
+		shuffleArray(txt_list);
+	}
     txt_object = $('#txtlzr');
-    var txt_options = {
-    	duration: TXT_INIT_DURATION,          // Time (ms) each blurb will remain on screen
-		rearrangeDuration: TXT_INIT_TRANSITION, // Time (ms) a character takes to reach its position
-		effect: TXT_INIT_EFFECT,        // Animation effect the characters use to appear
-		centered: TXT_INIT_CENTERED           // Centers the text relative to its container
+    var txt_options = 
+    {
+    	"duration" : txt_duration,          // Time (ms) each blurb will remain on screen
+		"rearrangeDuration" : txt_transition, // Time (ms) a character takes to reach its position
+		"effect" : txt_effect,        // Animation effect the characters use to appear
+		"centered" : txt_centered           // Centers the text relative to its container
     };
     txt_object.textualizer(txt_list, txt_options);
     txt_object.textualizer('start');
 
     txt_object.on('textualizer.changed', function(event, args) {
 
-    //check if last index --> THIS CODE WORKS!
+	// -----SAVE----
+    //check if the end of txt_list has been reached
+    //
+	// if (args.index === txt_list.length-1) 
+	// {
+	//     alert("pause");
+	//     txt_object.textualizer('pause');
+	// }
+	// -------------
 
-	 // if (args.index === txt_list.length-1) {
-	 //  	 alert("pause");
-	 //     txt_object.textualizer('pause');
-	 //   }
+
 	  });
 
 }
@@ -58,4 +68,25 @@ function getJSONDataFromGoogleSpreadsheet(spreadsheetURL)
 		txt_list = currentGoogleSpreadsheetJSONData["data"];
 		initDisplay(); 
 	});
+}
+
+
+function shuffleArray(array) 
+{
+	console.log("when am I calling you?");
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  return array;
 }

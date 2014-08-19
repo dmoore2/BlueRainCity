@@ -8,7 +8,6 @@
 
      <script src="http://code.jquery.com/jquery.min.js"></script>
      <script src="./js/global.js"></script>
-     <script src="./js/url_encoding.js"></script>
      <script type="text/javascript" src="./js/resources/google-spreadsheet.js"></script>
      <script src="./js/resources/textualizer.js"></script>
 	 <script src="./js/movie.js"></script>
