@@ -55,15 +55,30 @@ function initDisplay()
 
     txt_object.on('textualizer.changed', function(event, args)
 	{
-		console.log("got here");
-		$("#footer_content_lyrics_number_"+txt_current_index).animate({width: '10px'},1000);
+		//good red color: #aa0000
+		// console.log($("#footer_content_lyrics_number_"+txt_current_index));
+		// $( "#footer_content_lyrics_number_"+txt_current_index).contents().find( "p" ).css( "background-color", "#BADA55" );
+		$("#footer_content_lyrics_number_"+txt_current_index).animate({color: "#FFFFFF"},700);
+		if (txt_previous_index != -1)
+		{
+			$("#footer_content_lyrics_number_"+txt_previous_index).animate({color: "#ADD8E6"},4000);	
+		}
+		
+		//$("#footer_content_lyrics_number_"+txt_current_index).animate({width: 20},1000);
+		// if(txt_previous_index)
+		// {
+
+		// }
+		txt_previous_index = txt_current_index;
+		txt_current_index += 1;
+	  
 	  	//check if the end of txt_list has been reached
 	   
-			// if (args.index === txt_list.length-1) 
-			// {
-	  //   		alert("pause");
-	  //   		txt_object.textualizer('pause');
-			// }
+			if (args.index === txt_list.length-1) 
+			{
+				txt_current_index = 0;
+	    		//txt_object.textualizer('pause');
+			}
 	});
 	// -------------
 
