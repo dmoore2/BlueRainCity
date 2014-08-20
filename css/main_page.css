@@ -1,3 +1,13 @@
+/* @font-face {
+    font-family: Sears_Tower;
+    src: url(../fonts/sears-tower/Sears_Tower.ttf);
+}
+*/
+ @font-face {
+    font-family: Underwood-Champion;
+    src: url(../fonts/Underwood-Champion/underwood_champion.ttf);
+}
+
  #container {
     height: 100%;
     width: 100%;
@@ -65,4 +75,90 @@ small a:link
 small a:link
 {
     text-decoration:none;
+}
+
+
+/*sticky footer*/
+* {
+    margin: 0;
+}
+    html, body {
+    height: 100%;
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -10em;
+}
+.background-black
+{
+    background-color: black;
+}
+
+.footer, .push 
+{
+    border-top: 1px solid navy;
+    height: 4em;
+    background-color: black;
+    overflow: visible; 
+}
+/*----------*/
+
+/*subtle pattern links:
+../img/grey_wash_wall/grey_wash_wall.png
+
+*/
+
+
+
+.grey-background-pattern-repeat
+{
+    background-image:url(../img/congruent_pentagon/congruent_pentagon.png); 
+    background-repeat:repeat;
+}
+
+div.semitransparent_footer {
+    height: 6px;
+    margin: 0px 0px;
+    background-color: navy;
+    border: 0px solid black;
+    opacity: 0.3;
+    filter: alpha(opacity=60); /* For IE8 and earlier */
+}
+
+p.block_of_text
+{
+    text-align: justify;
+    font-size: 20px;
+    font-family: Underwood-Champion; 
+}
+
+.footer_content_lyrics_block
+{
+    float: center;
+    box-shadow: 2px;
+    padding-top: 9px;
+    padding-left: 30%;
+    padding-right: 35%;
+}
+
+/*.footer_content_lyrics_block_selected
+{
+    border-top: 2px solid black;
+}
+*/
+
+/*fade to black*/
+.footer_fade_height
+{
+    /*height: 1500px;*/
+}
+ .fade_to_black 
+ {
+  background: -moz-linear-gradient(bottom, #000000 0%, transparent 95%);
+  background: -webkit-linear-gradient(bottom, #000000 0%,transparent 95%);
+  background: -o-linear-gradient(bottom, #000000 0%,transparent 95%);
+  background: -ms-linear-gradient(bottom, #000000 0%,transparent 95%);
+  background: linear-gradient(bottom, #000000 0%,transparent 95%);
 }

@@ -1,10 +1,42 @@
 $(document).ready(function() {
 	getJSONDataFromGoogleSpreadsheet(currentGoogleSpreadsheetURL);
+
+	// var fillFooter = '<div><p>Copyright (c) 2014</p><br/>';
+	// for (var i = 0; i < 9; i++)
+	// {
+	// 	fillFooter+=fillFooter;
+	// }
+	// fillFooter = '<div class="fade_to_black footer_fade_height">'+'<div class="black-background">'+fillFooter+"</div></div>";
+	// $("#theFooter").html(fillFooter);
 });
+
+function fill_footer_with_lyrics()
+{
+
+	// fill the footer with lyrics in blocks of the form:
+	// <div id="footer_content_lyrics">
+	// 		<div id="footer_content_lyrics_number_1" class="footer_content_lyrics_block block_of_text">
+	// 			<p>content</p>
+	// 		</div>
+	//		.
+	// 		.
+	// 		.
+	// </div>
+	var fill_footer_lyrics = '<br/><br/><div id="footer_content_lyrics">';
+	for (var i = 0; i < txt_list.length; i++)
+	{
+		fill_footer_lyrics += '<div id="footer_content_lyrics_number_'+i+'" class="footer_content_lyrics_block"><p class="block_of_text">'+txt_list[i]+"</p></div>";
+		if(i == 0)
+		{
+			fill_footer_lyrics += "<br/>"	
+		}
+	}
+	fill_footer_lyrics += "</div><br/><br/>"
+	fill_footer_with(fill_footer_lyrics);
+}
 
 function initDisplay()
 {
-	console.log(txt_order_is_random);
 	if(txt_order_is_random)
 	{
 		shuffleArray(txt_list);
@@ -20,20 +52,24 @@ function initDisplay()
     txt_object.textualizer(txt_list, txt_options);
     txt_object.textualizer('start');
 
-    txt_object.on('textualizer.changed', function(event, args) {
 
-	// -----SAVE----
-    //check if the end of txt_list has been reached
-    //
-	// if (args.index === txt_list.length-1) 
-	// {
-	//     alert("pause");
-	//     txt_object.textualizer('pause');
-	// }
+    txt_object.on('textualizer.changed', function(event, args)
+	{
+		console.log("got here");
+		$("#footer_content_lyrics_number_"+txt_current_index).animate({width: '10px'},1000);
+	  	//check if the end of txt_list has been reached
+	   
+			// if (args.index === txt_list.length-1) 
+			// {
+	  //   		alert("pause");
+	  //   		txt_object.textualizer('pause');
+			// }
+	});
 	// -------------
 
 
-	  });
+	fill_footer_with_lyrics();
+
 
 }
 
@@ -53,7 +89,6 @@ function showMenu()
 		alert("error, txt_is_paused not working for some reason");
 	}
 	txt_is_paused = !txt_is_paused;
-
 }
 
 
@@ -68,6 +103,12 @@ function getJSONDataFromGoogleSpreadsheet(spreadsheetURL)
 		txt_list = currentGoogleSpreadsheetJSONData["data"];
 		initDisplay(); 
 	});
+}
+
+function fill_footer_with(fill_footer)
+{
+	fill_footer = '<div class="fade_to_black footer_fade_height">'+'<div class="black-background">'+fill_footer+"</div></div>";
+	$("#theFooter").html(fill_footer);
 }
 
 

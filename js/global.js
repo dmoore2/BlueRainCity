@@ -14,6 +14,8 @@ var DEFAULT_TXT_ORDER_IS_RANDOM = false;
 //----------VARIABLES------------
 //the actual list of text for the textualizer display
 var txt_list;
+var txt_last_index = null;
+var txt_current_index = 0;
 
 //the jquery selected object that displays text 
 var txt_object;
